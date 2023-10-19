@@ -1,7 +1,8 @@
-package com.example.lets_meet
+package com.example.lets_meet.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.lets_meet.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

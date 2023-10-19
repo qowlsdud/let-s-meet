@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036620710599",
+    "project_id": "let-s-meet-6022a",
+    "storage_bucket": "let-s-meet-6022a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036620710599:android:776f270bb8f87ca243b4e2",
+        "android_client_info": {
+          "package_name": "com.example.lets_meet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUnwnuEDmVFoXS8YXG4CbI7xOaQzbe50I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
