@@ -2,10 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-
 android {
     namespace 'com.example.lets_meet'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.lets_meet"
@@ -24,69 +23,53 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+    dataBinding{
+        enabled = true
+    }
+    viewBinding {
+        enabled = true
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'androidx.room:room-ktx:2.5.2'
 
+
     def lifecycle_version = "2.4.0"
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    implementation "androidx.activity:activity-ktx:1.7.2"
+    implementation "androidx.activity:activity-ktx:1.8.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "com.squareup.okhttp3:okhttp:4.9.2"
     implementation "com.squareup.okhttp3:okhttp-urlconnection:4.9.2"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.2"
-
-    def retrofit_version = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-
-    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
-    implementation "com.github.bumptech.glide:glide:4.12.0"
-    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
-
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
-
-    implementation("androidx.navigation:navigation-fragment:2.6.0")
-    implementation("androidx.navigation:navigation-ui:2.6.0")
-
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
 
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
-    androidTestImplementation("androidx.navigation:navigation-testing:2.6.0")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.4")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.4")
 
-    implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation("androidx.navigation:navigation-compose:2.7.4")
 
-    // Gson 변환기
+// Gson 변환기
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -94,24 +77,16 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'// Firestore
     implementation 'com.google.firebase:firebase-storage-ktx' // Storage
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    //implementation 'me.relex:circleindicator:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-messaging:23.2.0'
+    implementation 'com.google.firebase:firebase-messaging:23.3.0'
 
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
-    //implementation 'org.simpleframework.xml:simple-xml:2.7.1'
 
-    //retrofit
-    //implementation "com.squareup.retrofit2:retrofit:2.7.2"
-
-    //xml parser
+//xml parser
     implementation 'com.tickaroo.tikxml:annotation:0.8.13'
     implementation 'com.tickaroo.tikxml:core:0.8.13'
     implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
     annotationProcessor  'com.tickaroo.tikxml:processor:0.8.13'
 
-    //kapt 'com.tickaroo.tikxml:processor:0.8.13'
-    //kapt "com.squareup.moshi:moshi-kotlin-codegen:1.9.3"
-
-    implementation 'com.squareup.retrofit2:converter-simplexml:2.9.0'
 }
+apply plugin: 'com.google.gms.google-services'

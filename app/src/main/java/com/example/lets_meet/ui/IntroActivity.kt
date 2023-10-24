@@ -1,10 +1,11 @@
-package com.example.lets_meet
+package com.example.lets_meet.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.lets_meet.onboard.ViewPagerActivity
+import com.example.lets_meet.R
 
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

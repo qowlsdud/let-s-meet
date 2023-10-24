@@ -1,4 +1,4 @@
-package com.example.lets_meet.onboard
+package com.example.lets_meet.ui.onboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.example.lets_meet.main
+package com.example.lets_meet.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.lets_meet.onboard
+package com.example.lets_meet.ui.onboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+
+            name="vm"
+
+            type="com.example.lets_meet.ui.signup.SignUpViewModel" />
+
+    </data>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+
+
+
+        android:fillViewport="true">
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent">
+
+
+
+
+            <androidx.constraintlayout.widget.Guideline
+
+                android:id="@+id/line_signUp1_start"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+
+
+
+
+                android:orientation="vertical"
+
+                app:layout_constraintGuide_begin="16dp" />
+
+
+
+
+            <androidx.constraintlayout.widget.Guideline
+
+                android:id="@+id/line_signUp1_end"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+
+
+
+
+                android:orientation="vertical"
+
+                app:layout_constraintGuide_end="16dp" />
+
+
+
+
+            <com.example.lets_meet.ui.header.NavigationHeader
+
+                android:id="@+id/hd_signUp1"
+
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+            <TextView
+
+                android:id="@+id/textView"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14sp"
+
+                android:textColor="@color/black"
+
+                android:text="만나서 반가워요!"
+
+                android:textSize="22sp"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start"
+
+                app:layout_constraintTop_toBottomOf="@id/hd_signUp1" />
+
+
+
+
+            <TextView
+
+                android:id="@+id/textView2"
+
+                android:layout_width="wrap_content"
+
+
+
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+
+                android:text="시작 전 이메일을 알려주세요!"
+
+                android:textColor="@color/black"
+
+                android:textStyle="bold"
+
+                android:textFontWeight="700"
+
+
+
+
+                android:textSize="22sp"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+
+
+            <TextView
+
+                android:layout_marginStart="5dp"
+
+                android:id="@+id/textView3"
+
+                android:layout_width="wrap_content"
+
+
+
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="24dp"
+
+                android:text="이메일"
+
+
+
+
+                android:textColor="#B7B7B7"
+
+
+
+
+                android:textSize="13sp"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+
+
+            <EditText
+
+                android:id="@+id/edt_signUp1_email"
+
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+
+
+
+
+                android:layout_marginTop="12dp"
+
+                android:hint="이메일을 입력해주세요"
+
+                android:text="@={vm.email}"
+
+                android:inputType="textEmailAddress"
+
+                android:backgroundTint="#DBDBDB"
+
+                app:layout_constraintEnd_toEndOf="@id/line_signUp1_end"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+
+
+            <TextView
+
+                android:id="@+id/txt_sign1_eror"
+
+                android:drawableStart="@drawable/error"
+
+                android:text="이메일을 제대로 입력해주세요"
+
+                android:visibility="invisible"
+
+                android:drawablePadding="3dp"
+
+                android:textColor="@color/error"
+
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toBottomOf="@id/edt_signUp1_email"
+
+                app:layout_constraintEnd_toEndOf="@id/line_signUp1_end"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start"/>
+
+
+
+
+
+
+
+            <Button
+
+                android:id="@+id/next"
+
+                android:layout_width="0dp"
+
+                android:textStyle="bold"
+
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/color1"
+
+                android:background="@drawable/button_round"
+
+                android:text="다음"
+
+
+
+
+                android:layout_marginVertical="16dp"
+
+                android:src="@drawable/button_round"
+
+                app:layout_constraintVertical_bias="1"
+
+                app:layout_constraintTop_toBottomOf="@id/edt_signUp1_email"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="@id/line_signUp1_end"
+
+                app:layout_constraintStart_toStartOf="@id/line_signUp1_start" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
