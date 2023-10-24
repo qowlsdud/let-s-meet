@@ -1,11 +1,12 @@
-package com.example.lets_meet
+package com.example.lets_meet.ui.onboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.lets_meet.R
 
-class IntroActivity : AppCompatActivity() {
+class ViewPagerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
+        setContentView(R.layout.activity_view_pager)
     }
 }

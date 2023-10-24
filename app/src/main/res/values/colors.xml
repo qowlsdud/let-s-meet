@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="error">#FA3131</color>
+    <color name="color1">#3F7BF1</color>
+    <color name="gray">#DBDBDB</color>
+    <color name="txtColor">#1A1E27</color>
+    <color name="txtColor2">#5D6760</color>
+    <color name="gray2">#B1C0B5</color>
 </resources>
