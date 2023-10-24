@@ -3,7 +3,16 @@
     <style name="Base.Theme.Lets_meet" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
     <style name="Theme.Lets_meet" parent="Base.Theme.Lets_meet" />
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/suit_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 </resources>
