@@ -10,6 +10,7 @@
 
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="editTextStyle">@style/EdittextStyle</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
 
