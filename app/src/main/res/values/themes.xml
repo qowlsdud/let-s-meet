@@ -23,6 +23,16 @@
 
         <item name="android:textColorHint">@color/gray2</item>
         <item name="android:textSize">19sp</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
+
     <style name="Theme.Lets_meet" parent="Base.Theme.Lets_meet" />
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/suit_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text1</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 </resources>
