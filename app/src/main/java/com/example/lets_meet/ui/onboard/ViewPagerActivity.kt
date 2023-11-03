@@ -3,10 +3,9 @@ package com.example.lets_meet.ui.onboard
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.lets_meet.LoginActivity
+import com.example.lets_meet.ui.login.LoginActivity
 import com.example.lets_meet.R
 import com.example.lets_meet.databinding.ActivityViewPagerBinding
-import com.example.lets_meet.ui.signup.SignUp1Fragment
 import com.example.lets_meet.ui.signup.SignUpActivity
 
 class ViewPagerActivity : AppCompatActivity() {
@@ -28,11 +27,11 @@ class ViewPagerActivity : AppCompatActivity() {
 
         // 시작하기 버튼 눌렀을 때 스킵하고 회원가입 창으로 이동
         binding.btnStart.setOnClickListener {
-            startActivity(Intent(this, SignUp1Fragment::class.java))
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
-        // 로그인 버튼 눌렀을 때 스킵하고 로그인 창으로 이동
-        binding.btnStart.setOnClickListener {
+
+        binding.btnLoginText.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }

@@ -1,21 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:paddingBottom="22dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.example.lets_meet.ui.header.NavigationHeader
-        android:id="@+id/hd_signUp1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity"
+        android:paddingBottom="22dp">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.22" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.42" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:text="GREENUP"
+            android:textColor="@color/main"
+            android:fontFamily="@font/suit_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/login_guideline1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@id/login_guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/login_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="아이디를 입력해주세요"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/suit_medium"
+                android:paddingStart="20dp" />
+
+            <EditText
+                android:id="@+id/login_et_pass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="비밀번호를 입력해주세요"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/suit_medium"
+                android:paddingStart="20dp"
+                android:layout_marginTop="15dp" />
+
+            <CheckBox
+                android:id="@+id/login_check_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 확인"
+                android:fontFamily="@font/suit_medium"
+                android:paddingStart="8dp"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_btn_loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="로그인"
+            android:background="@drawable/button_round"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_guideline3" />
+
+        <TextView
+            android:id="@+id/login_txt_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textColor="@color/main"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_btn_loginbtn" />
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

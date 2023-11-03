@@ -16,6 +16,6 @@ class IntroActivity : AppCompatActivity() {
             val intent = Intent(this, ViewPagerActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 1500)
     }
 }
