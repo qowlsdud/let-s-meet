@@ -101,7 +101,7 @@
                 android:id="@+id/next"
                 android:layout_width="0dp"
                 android:textStyle="bold"
-                android:layout_height="wrap_content"
+                android:layout_height="54dp"
                 android:background="@drawable/button_round"
                 android:text="다음"
                 app:layout_constraintTop_toTopOf="@id/guideline2"
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.14" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
