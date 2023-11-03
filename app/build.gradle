@@ -23,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "1.8"
     }
     dataBinding{
         enabled = true
@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'androidx.room:room-ktx:2.5.2'
 
-
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
     def lifecycle_version = "2.4.0"
     //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -87,7 +87,7 @@ dependencies {
     implementation 'com.tickaroo.tikxml:core:0.8.13'
     implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
     annotationProcessor  'com.tickaroo.tikxml:processor:0.8.13'
-
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     //viewpager
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 

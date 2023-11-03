@@ -35,8 +35,10 @@
     </declare-styleable>
 
     <declare-styleable name="HeaderMain">
+        <attr name="mainMenuText" format="string"/>
         <attr name="mainMenu1Icon" format="reference"/>
         <attr name="mainMenu2Icon" format="reference"/>
+        <attr name="mainMenu3Icon" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="HeaderNavigation">
