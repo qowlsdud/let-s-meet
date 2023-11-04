@@ -4,14 +4,10 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lets_meet.R
 import com.example.lets_meet.databinding.FragmentFriendBinding
-import com.example.lets_meet.databinding.FragmentHomeBinding
 import com.example.lets_meet.model.Friend
 import com.example.lets_meet.ui.base.BaseFragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,16 +17,10 @@ class FriendFragment : BaseFragment<FragmentFriendBinding>(R.layout.fragment_fri
     private lateinit var adapter: FriendAdapter
     private lateinit var firestore: FirebaseFirestore
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        firestore = FirebaseFirestore.getInstance()
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        firestore = FirebaseFirestore.getInstance()
 
         setupRecyclerView()
         fetchFriends()
@@ -57,5 +47,4 @@ class FriendFragment : BaseFragment<FragmentFriendBinding>(R.layout.fragment_fri
                 Log.w(TAG, "Error getting documents: ", exception)
             }
     }
-
 }

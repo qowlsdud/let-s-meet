@@ -32,9 +32,9 @@ class LoginActivity : AppCompatActivity() {
         autoSkipEdit.putString("autoskip", "True")
         autoSkipEdit.commit()
         auth = FirebaseAuth.getInstance()
-        val emailInput = findViewById<EditText>(R.id.login_et_id)
-        val passwordInput = findViewById<EditText>(R.id.login_et_pass)
-        findViewById<Button>(R.id.login_btn_loginbtn).setOnClickListener {
+        val emailInput = findViewById<EditText>(R.id.login_edt_email)
+        val passwordInput = findViewById<EditText>(R.id.login_edt_password)
+        findViewById<Button>(R.id.btn_start).setOnClickListener {
             auth.signInWithEmailAndPassword(
                 emailInput.text.toString(),
                 passwordInput.text.toString()
@@ -48,22 +48,19 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
         }
-        findViewById<TextView>(R.id.login_txt_signup).setOnClickListener{
+        findViewById<TextView>(R.id.forgot_password).setOnClickListener{
             val loginintent = Intent(this, SignUpActivity::class.java)
             startActivity(loginintent)
 
         }
-        binding.loginCheckPass.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                binding.loginEtPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            } else {
-                binding.loginEtPass.transformationMethod = PasswordTransformationMethod.getInstance()
-            }
-        }
+//        binding.loginCheckPass.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                binding.loginEtPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+//            } else {
+//                binding.loginEtPass.transformationMethod = PasswordTransformationMethod.getInstance()
+//            }
+//        }
 
 
-    }
-    override fun onBackPressed() {
-        // 뒤로가기 버튼을 무시하고 아무 동작도 수행하지 않음
     }
 }
