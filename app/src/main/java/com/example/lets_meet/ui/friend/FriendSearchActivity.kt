@@ -82,18 +82,36 @@ class FriendSearchActivity: BaseActivity<ActivityFriendSearchBinding>(R.layout.a
     }
 
     private fun searchFriends(query: String) {
-        // Firestore에서 query에 해당하는 친구들을 검색하고 결과를 RecyclerView에 표시
-        firestore.collection("friends")
-            .whereEqualTo("name", query)
+        val user = FirebaseAuth.getInstance().currentUser
+        val email = user?.email // 현재 로그인한 사용자의 이메일
+        Log.e("dddd", query)
+        adapter.updateFriends(emptyList())
+        firestore.collection(email.toString())
+            .document("userinfo")
+            .collection("friends")
             .get()
             .addOnSuccessListener { documents ->
-                val friendsList = documents.toObjects(Friend::class.java)
-                adapter.updateFriends(friendsList)
+                val friendsEmailList = documents.toObjects(Email::class.java)
+
+                var friendsList = mutableListOf<Friend>()
+                for (i in friendsEmailList) {
+                    firestore.collection(i.email)
+                        .get()
+                        .addOnSuccessListener { documents ->
+
+                            val friend = documents.toObjects(Friend::class.java)
+                            if(friend[0].name.contains(query)) {
+                                    adapter.updateFriends(friend)
+                            }
+                        }
+                }
+
             }
             .addOnFailureListener { exception ->
-                // 오류 처리
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
+
+
     }
 
-    // 필요한 나머지 코드...
 }

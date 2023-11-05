@@ -1,5 +1,6 @@
 package com.example.lets_meet.ui.caleander
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lets_meet.R
 import com.example.lets_meet.databinding.FragmentCaleanderBinding
 import com.example.lets_meet.ui.base.BaseFragment
+import com.example.lets_meet.ui.friend.FriendAddActivity
 import java.util.*
 
 class CaleanderFragment : BaseFragment<FragmentCaleanderBinding>(R.layout.fragment_caleander){
@@ -28,12 +30,16 @@ class CaleanderFragment : BaseFragment<FragmentCaleanderBinding>(R.layout.fragme
         calendarAdapter = CaleanderAdapter(generateCalendarDays())
         binding.rvCalendar.adapter = calendarAdapter
 
-        // '+' 버튼에 대한 클릭 리스너 설정
-        binding.plusCaleander.setOnClickListener {
-            val bottomSheetDialogFragment = CaleanderDialogFragment()
-            bottomSheetDialogFragment.show(parentFragmentManager, CaleanderDialogFragment.TAG)
-        }
+        // '+' dialogsetting
+//        binding.plusCaleander.setOnClickListener {
+//            val bottomSheetDialogFragment = CaleanderDialogFragment()
+//            bottomSheetDialogFragment.show(parentFragmentManager, CaleanderDialogFragment.TAG)
+//        }
 
+        binding.plusCaleander.setOnClickListener {
+            val intent = Intent(context, CaleanderAddActivity::class.java)
+            startActivity(intent)
+        }
         // 초기화된 binding의 root view를 반환합니다.
         return binding.root
     }

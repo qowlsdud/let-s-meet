@@ -30,8 +30,7 @@ class FriendAddActivity : BaseActivity<ActivityFriendAddBinding>(R.layout.activi
             db.collection(friendemail)
                 .document("userinfo")
                 .collection("friends")
-                .document(user?.uid.toString())
-                .set(data1)
+                .add(data1)
                 .addOnSuccessListener {
                     Log.e("dd","success")
                 }
@@ -43,10 +42,10 @@ class FriendAddActivity : BaseActivity<ActivityFriendAddBinding>(R.layout.activi
             )
             db.collection(user?.email.toString()).document("userinfo")
                 .collection("friends")
-                .document(user?.uid.toString())
-                .set(data2)
+                .add(data2)
                 .addOnSuccessListener {
                     Log.e("dd","success")
+                    finish()
                 }
                 .addOnFailureListener { exception ->
                     Log.e("dd",exception.toString())
