@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import com.example.lets_meet.R
 import com.example.lets_meet.databinding.ActivityMainBinding
 import com.example.lets_meet.ui.base.BaseActivity
+import com.example.lets_meet.ui.caleander.CaleanderFragment
 import com.example.lets_meet.ui.chat.ChatFragment
 import com.example.lets_meet.ui.friend.FriendFragment
 
