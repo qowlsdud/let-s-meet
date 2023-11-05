@@ -15,6 +15,7 @@ class FriendAdapter(private var friends: List<Friend>, private val onClick: (Fri
     class FriendViewHolder(itemView: View, val onClick: (Friend) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private var currentFriend: Friend? = null
         private val nameTextView: TextView = itemView.findViewById(R.id.textView_friend_name)
+        private val stateTextView: TextView = itemView.findViewById(R.id.textView_friend_state)
         private val profileImageView: ImageView = itemView.findViewById(R.id.imageView_friend_profile)
         // 기타 뷰 요소...
 
@@ -29,7 +30,8 @@ class FriendAdapter(private var friends: List<Friend>, private val onClick: (Fri
         fun bind(friend: Friend) {
             currentFriend = friend
             nameTextView.text = friend.name
-            // 프로필 이미지 로드, 예를 들어 Glide 라이브러리 사용
+            stateTextView.text = friend.state
+            // 프로필 이미지 로드
             // Glide.with(itemView.context).load(friend.profileImageUrl).into(profileImageView)
         }
     }

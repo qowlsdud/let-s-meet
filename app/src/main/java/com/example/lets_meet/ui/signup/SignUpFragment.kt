@@ -18,6 +18,7 @@ abstract class SignUpFragment<D : ViewDataBinding>(
             2  -> R.id.action_signUp2Fragment_to_signUp3Fragment
             3  -> R.id.action_signUp3Fragment_to_signUp4Fragment
             4  -> R.id.action_signUp4Fragment_to_signUp5Fragment
+            5  -> R.id.action_signUp5Fragment_to_signUp6Fragment
             else  -> throw Exception("Navigation page index overflow")
         }
 
@@ -30,6 +31,7 @@ abstract class SignUpFragment<D : ViewDataBinding>(
             3  -> R.id.action_signUp3Fragment_to_signUp2Fragment
             4  -> R.id.action_signUp4Fragment_to_signUp3Fragment
             5  -> R.id.action_signUp5Fragment_to_signUp4Fragment
+            6  -> R.id.action_signUp6Fragment_to_signUp5Fragment
             else  -> throw Exception("Navigation page index overflow")
         }
 

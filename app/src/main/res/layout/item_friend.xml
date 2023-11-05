@@ -19,6 +19,14 @@
         android:layout_marginStart="10dp"
         android:textSize="18sp"
         android:text="Friend Name" />
+    <TextView
+        android:id="@+id/textView_friend_state"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:text="Friend State" />
 
     <!-- 여기에 추가적인 뷰들을 배치할 수 있습니다. -->
 

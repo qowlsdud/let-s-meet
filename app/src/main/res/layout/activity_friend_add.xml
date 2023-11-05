@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 친구 이름을 입력하는 EditText -->
+        <EditText
+            android:id="@+id/editTextFriendEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="친구의 이메일을 입력하세요"
+            android:inputType="textPersonName" />
+
+
+        <!-- 추가 정보를 입력하는 EditText, 필요한 경우 더 추가할 수 있음 -->
+        <!-- ... -->
+
+        <!-- 데이터를 저장하는 버튼 -->
+        <Button
+            android:id="@+id/buttonSaveFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</layout>

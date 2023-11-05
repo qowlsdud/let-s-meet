@@ -11,9 +11,9 @@ import java.util.regex.Pattern
 class SignUpViewModel: ViewModel() {
 
     var auth = FirebaseAuth.getInstance()
-
-    val nickname = MutableLiveData<String>()    // 닉네임
-    val email = MutableLiveData<String>()       // 이메일
+    val email = MutableLiveData<String>()
+    val nickname = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData<String>()
     val password = MutableLiveData<String>()    // 비밀번호
     val passwordRe = MutableLiveData<String>()  // 비밀번호 다시 입력
     val errorMessage = MutableLiveData<String?>()
@@ -29,13 +29,18 @@ class SignUpViewModel: ViewModel() {
                     val db = FirebaseFirestore.getInstance()
                     state.value = State.OK
                     k = true
-                    val data = hashMapOf(
-                        "nickname" to nickname.value.toString()
+                    val user = FirebaseAuth.getInstance().currentUser
+                    val uid = user?.uid
+                    val data2 = hashMapOf(
+                        "id" to uid.toString(),
+                        "email" to email.value.toString(),
+                        "name" to nickname.value.toString(),
+                        "profileImageUrl" to "",
+                        "state" to "없음"
                     )
-
                     db.collection(email.value.toString())
-                        .document("usernickname")
-                        .set(data)
+                        .document("userinfo")
+                        .set(data2)
                         .addOnSuccessListener {
                             Log.e("dd","success")
                         }
@@ -43,7 +48,6 @@ class SignUpViewModel: ViewModel() {
                             Log.e("dd",exception.toString())
                         }
 
-                    Log.d("dd","ddd")
 
                 }else if(task.exception?.message.isNullOrEmpty()){
                     Log.e("dd",task.exception?.message.toString())
@@ -129,6 +133,17 @@ class SignUpViewModel: ViewModel() {
         }
 
         if (nickname.value!!.length !in 2..8) {
+            return false
+        }
+
+        return true
+    }
+    fun inputCheckPhoneNumber(): Boolean {
+        if (phoneNumber.value.isNullOrBlank()) {
+            return false
+        }
+
+        if (phoneNumber.value!!.length !in 11..11) {
             return false
         }
 

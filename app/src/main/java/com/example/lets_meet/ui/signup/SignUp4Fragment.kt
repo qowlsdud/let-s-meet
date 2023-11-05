@@ -29,9 +29,9 @@ class SignUp4Fragment : SignUpFragment<FragmentSignUp4Binding>(R.layout.fragment
             if (viewModel.inputCheckNameNickName()) {
 
 
-                if(viewModel.sigininAndSignup()) {
+
                     gotoNext()
-                }
+
             }
             else{
                 YoYo.with(Techniques.Shake)

@@ -6,5 +6,4 @@ data class Friend(
     var name: String = "",
     var profileImageUrl: String = "",
     var state : String = "",
-
 )

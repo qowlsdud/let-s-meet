@@ -53,6 +53,17 @@
         <action
             android:id="@+id/action_signUp5Fragment_to_signUp4Fragment"
             app:destination="@id/signUp4Fragment" />
+        <action
+            android:id="@+id/action_signUp5Fragment_to_signUp6Fragment"
+            app:destination="@id/signUp6Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp6Fragment"
+        android:name="com.example.lets_meet.ui.signup.SignUp6Fragment"
+        android:label="SignUp2Fragment">
+        <action
+            android:id="@+id/action_signUp6Fragment_to_signUp5Fragment"
+            app:destination="@id/signUp5Fragment" />
     </fragment>
 
 </navigation>
