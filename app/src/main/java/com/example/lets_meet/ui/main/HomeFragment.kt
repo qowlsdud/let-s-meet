@@ -72,8 +72,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             weekAdapter.selectedDate = selectedDate
             // 데이터 변경을 반영하기 위해 어댑터에게 알려줍니다.
             weekAdapter.notifyDataSetChanged()
-//            setupEventRecyclerView()
-//            fetchEventsForSelectedDate(selectedDate)
+            setupEventRecyclerView()
+            fetchEventsForSelectedDate(selectedDate)
         }
         // 초기값 설정: 오늘 날짜를 선택합니다.
         weekAdapter.selectedDate = Calendar.getInstance().time
@@ -85,7 +85,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         rvMain.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvMain.adapter = weekAdapter
         setupRecyclerView()
-//        fetchFriends()
+        fetchFriends()
     }
 
     private fun getCurrentWeekDates(): List<Date> {
@@ -115,43 +115,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
       }
-//    private fun setupEventRecyclerView() {
-//
-//        eventAdapter = EventAdapter(emptyList(), weekAdapter.selectedDate.toString())
-//        binding.recyclerView2.layoutManager = LinearLayoutManager(context)
-//        binding.recyclerView2.adapter = eventAdapter
-//    }
-//
-//    // 선택된 날짜에 맞는 이벤트를 가져옵니다.
-//    private fun fetchEventsForSelectedDate(selectedDate: Date) {
-//        val user = FirebaseAuth.getInstance().currentUser
-//        // `selectedDate`를 "MM월 dd일" 포맷으로 문자열로 변환
-//        val dateFormat = SimpleDateFormat("MM월 dd일", Locale.KOREA)
-//        val formattedDate = dateFormat.format(selectedDate)
-//
-//
-//        // Firestore에서 이벤트를 가져오는 코드 작성
-//        firestore.collection(user?.email.toString())
-//            .document("event")
-//            .collection("event")
-//            .get()
-//            .addOnSuccessListener { documents ->
-//                Log.e("ddd",documents.toObjects(Event::class.java).toString())
-//                val events = documents.toObjects(Event::class.java)
-//                for (i in events) {
-//                    if(i.date == formattedDate){
-//
-//                            val friend = documents.toObjects(Friend::class.java)
-//                            adapter.updateFriends(friend)
-//                        }
-//                }
-//                eventAdapter = EventAdapter(events, formattedDate)
-//                binding.recyclerView2.adapter = eventAdapter
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.w(ContentValues.TAG, "Error getting events: ", exception)
-//            }
-//    }
+    private fun setupEventRecyclerView() {
+
+        eventAdapter = EventAdapter(emptyList(), weekAdapter.selectedDate.toString())
+        binding.recyclerView2.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView2.adapter = eventAdapter
+    }
+
+    // 선택된 날짜에 맞는 이벤트를 가져옵니다.
+    private fun fetchEventsForSelectedDate(selectedDate: Date) {
+        val user = FirebaseAuth.getInstance().currentUser
+        // `selectedDate`를 "MM월 dd일" 포맷으로 문자열로 변환
+        val dateFormat = SimpleDateFormat("MM월 dd일", Locale.KOREA)
+        val formattedDate = dateFormat.format(selectedDate)
+
+
+        // Firestore에서 이벤트를 가져오는 코드 작성
+        firestore.collection(user?.email.toString())
+            .document("event")
+            .collection("event")
+            .get()
+            .addOnSuccessListener { documents ->
+                Log.e("ddd",documents.toObjects(Event::class.java).toString())
+                val events = documents.toObjects(Event::class.java)
+                for (i in events) {
+                    if(i.date == formattedDate){
+
+                            val friend = documents.toObjects(Friend::class.java)
+                            adapter.updateFriends(friend)
+                        }
+                }
+                eventAdapter = EventAdapter(events, formattedDate)
+                binding.recyclerView2.adapter = eventAdapter
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting events: ", exception)
+            }
+    }
     private fun fetchFriends() {
         val user = FirebaseAuth.getInstance().currentUser
         val email = user?.email // 현재 로그인한 사용자의 이메일
