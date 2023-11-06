@@ -19,14 +19,15 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/suit_bold</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="EdittextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColorHint">@color/text3</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="android:backgroundTint">@color/sub3</item>
-        <item name="android:paddingBottom">14dp</item>
+        <item name="android:background">@drawable/edt_background</item>
+        <item name="android:paddingBottom">6dp</item>
     </style>
 
     <style name="Theme.Lets_meet" parent="Base.Theme.Lets_meet" />
