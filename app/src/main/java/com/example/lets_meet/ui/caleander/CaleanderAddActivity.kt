@@ -12,6 +12,9 @@ import com.example.lets_meet.model.Event
 import com.example.lets_meet.ui.base.BaseActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class CaleanderAddActivity : BaseActivity<ActivityCaleanderAddBinding>(R.layout.activity_caleander_add){
     private lateinit var firestore: FirebaseFirestore
@@ -20,53 +23,39 @@ class CaleanderAddActivity : BaseActivity<ActivityCaleanderAddBinding>(R.layout.
 
 
         firestore = FirebaseFirestore.getInstance()
+        var currentDate = Calendar.getInstance().time
+        var dateFormat = SimpleDateFormat("MM월 dd일", Locale.KOREA)
+        var dateString: String = dateFormat.format(currentDate)
+        binding.startdate.text = dateString
+        binding.enddate.text = dateString
 
-//        binding.buttonSubmit.setOnClickListener {
-//            submitEvent()
-//        }
-
-//        binding.editTextDate.setOnClickListener {
-//            showDatePickerDialog()
-//        }
-//
-//        binding.editTextTime.setOnClickListener {
-//            showTimePickerDialog()
-//        }
+        binding.btnStart.setOnClickListener {
+            SaveEvent()
+        }
     }
 
-    private fun showDatePickerDialog() {
-        // DatePickerDialog 구현
+    private fun SaveEvent() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val data = hashMapOf(
+            "title" to binding.caleanderTitleEt.text.toString(),
+            "date" to binding.startdate.text.toString(),
+            "starttime" to binding.starttime.text.toString(),
+            "endtime" to binding.endtime.text.toString(),
+            "public" to binding.publicSwitch.isChecked,
+            "notice" to binding.noticeSwitcg.isChecked
+        )
+        firestore.collection(user?.email.toString())
+            .document("event")
+            .collection("event")
+            .add(data)
+            .addOnSuccessListener {
+                Log.e("dd","success")
+                finish()
+            }
+            .addOnFailureListener { exception ->
+                Log.e("dd",exception.toString())
+            }
     }
 
-    private fun showTimePickerDialog() {
-        // TimePickerDialog 구현
-    }
-
-//    private fun submitEvent() {
-//
-//        val title = binding.editTextTitle.text.toString().trim()
-//        val starttime = binding.editTextLocation.text.toString().trim()
-//        val date = binding.editTextDate.text.toString().trim()
-//        val endtime = binding.editTextTime.text.toString().trim()
-//        val description = binding.editTextDescription.text.toString().trim()
-//
-//        if (title.isNotEmpty() && date.isNotEmpty() && starttime.isNotEmpty() && endtime.isNotEmpty() ){
-//            val event = Event(title, starttime, date, endtime, description)
-//            Log.e("dddddd", event.toString())
-//            val user = FirebaseAuth.getInstance().currentUser
-//            firestore.collection(user?.email.toString())
-//                .document("userinfo")
-//                .collection("events")
-//                .add(event)
-//                .addOnSuccessListener {
-//                    Toast.makeText(this, "Event added", Toast.LENGTH_LONG).show()
-//                    finish()
-//                }
-//                .addOnFailureListener {
-//                    Toast.makeText(this, "Failed to add event", Toast.LENGTH_LONG).show()
-//                }
-//        } else {
-//            Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_LONG).show()
-//        }
-//    }
 }
