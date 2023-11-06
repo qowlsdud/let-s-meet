@@ -14,7 +14,20 @@
         tools:context=".ui.caleander.CaleanderFragment"
         android:padding="8dp">
 
-        <!-- 달력의 요일을 나타내는 헤더 -->
+        <com.example.lets_meet.ui.header.MainHeader
+            android:id="@+id/header_friend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:mainMenuText = "캘린더"
+            app:mainMenu1Icon="@drawable/header_setting_black"
+            app:mainMenu2Icon="@drawable/search_main"
+            app:mainMenu3Icon="@drawable/notice_black"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

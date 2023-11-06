@@ -12,12 +12,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.lets_meet.R
+import com.example.lets_meet.databinding.ActivityCaleanderAddBinding
 import com.example.lets_meet.databinding.ActivityLoginBinding
+import com.example.lets_meet.ui.base.BaseActivity
 import com.example.lets_meet.ui.main.MainActivity
 import com.example.lets_meet.ui.signup.SignUpActivity
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity  : BaseActivity<ActivityLoginBinding>(R.layout.activity_login){
 
     lateinit var auth : FirebaseAuth
     @SuppressLint("MissingInflatedId")
@@ -48,11 +50,10 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
         }
-        findViewById<TextView>(R.id.forgot_password).setOnClickListener{
-            val loginintent = Intent(this, SignUpActivity::class.java)
-            startActivity(loginintent)
-
-        }
+//        binding.forgotPassword.setOnClickListener{
+//            val loginintent = Intent(this, SignUpActivity::class.java)
+//            startActivity(loginintent)
+//        }
 //        binding.loginCheckPass.setOnCheckedChangeListener { _, isChecked ->
 //            if (isChecked) {
 //                binding.loginEtPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
