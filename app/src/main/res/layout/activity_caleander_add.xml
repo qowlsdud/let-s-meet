@@ -14,12 +14,14 @@
         android:paddingStart="22dp"
         android:paddingEnd="22dp"
         tools:context=".ui.caleander.CaleanderAddActivity">
+
         <ImageView
             android:id="@+id/login_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back"
-            android:paddingVertical="13dp"
+            android:paddingVertical="20dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
