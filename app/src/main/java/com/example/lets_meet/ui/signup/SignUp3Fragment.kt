@@ -31,7 +31,7 @@ class SignUp3Fragment : SignUpFragment<FragmentSignUp3Binding>(R.layout.fragment
                     .duration(500)
                     .repeat(0)
                     .playOn(binding.txtSign3Eror)
-                binding.edtSignUp3Email.backgroundTintList = ColorStateList.valueOf(Color.rgb(250,49,49))
+                binding.edtSignUp3Email.setBackgroundResource(R.drawable.edt_error)
                 binding.txtSign3Eror.visibility = View.VISIBLE
             }
         }

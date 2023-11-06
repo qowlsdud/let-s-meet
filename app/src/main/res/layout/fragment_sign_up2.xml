@@ -78,6 +78,7 @@
                 android:hint="비밀번호를 입력해주세요"
                 android:text = "@={vm.password}"
                 android:inputType="textPassword"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="@id/line_signUp2_end"
                 app:layout_constraintStart_toStartOf="@id/line_signUp2_start"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />

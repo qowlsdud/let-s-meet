@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
@@ -35,7 +36,7 @@ class SignUp1Fragment : SignUpFragment<FragmentSignUp1Binding>(R.layout.fragment
                     .duration(500)
                     .repeat(0)
                     .playOn(binding.txtSign1Eror)
-                binding.edtSignUp1Email.backgroundTintList = ColorStateList.valueOf(Color.rgb(250,49,49))
+                binding.edtSignUp1Email.setBackgroundResource(R.drawable.edt_error)
                 binding.txtSign1Eror.visibility = View.VISIBLE
             }
         }
