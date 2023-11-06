@@ -38,8 +38,7 @@ class WeekAdapter(
         private val dayFormat = SimpleDateFormat("EE", Locale.getDefault())
         fun bind(date: Date, isSelected: Boolean) {
             val sdf = SimpleDateFormat("dd", Locale.getDefault())
-            tvDay.text = sdf.format(date)
-            tvDayOfWeek.text = dayFormat.format(date.time)
+
             itemView.setOnClickListener {
                 onDateClick(date)
             }
@@ -50,6 +49,8 @@ class WeekAdapter(
             else {
                 tvDay.setBackgroundResource(0) // 기본 배경
             }
+            tvDay.text = sdf.format(date)
+            tvDayOfWeek.text = dayFormat.format(date.time)
         }
     }
 }
