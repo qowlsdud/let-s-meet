@@ -74,6 +74,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             weekAdapter.notifyDataSetChanged()
             setupEventRecyclerView()
             fetchEventsForSelectedDate(selectedDate)
+            setupRecyclerView()
+            fetchFriends()
         }
         // 초기값 설정: 오늘 날짜를 선택합니다.
         weekAdapter.selectedDate = Calendar.getInstance().time
