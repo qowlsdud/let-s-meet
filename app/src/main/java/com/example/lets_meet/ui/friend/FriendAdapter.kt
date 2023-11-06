@@ -32,7 +32,7 @@ class FriendAdapter(private var friends: List<Friend>, private val onClick: (Fri
             currentFriend = friend
             nameTextView.text = friend.name
             stateTextView.text = friend.state
-//            Glide.with(itemView.context).load(friend.profileImageUrl).into(profileImageView)
+            Glide.with(itemView.context).load(friend.profileImageUrl).into(profileImageView)
         }
     }
 
