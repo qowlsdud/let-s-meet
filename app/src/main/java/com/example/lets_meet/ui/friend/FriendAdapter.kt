@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.lets_meet.R
 import com.example.lets_meet.model.Friend
 
@@ -31,8 +32,7 @@ class FriendAdapter(private var friends: List<Friend>, private val onClick: (Fri
             currentFriend = friend
             nameTextView.text = friend.name
             stateTextView.text = friend.state
-            // 프로필 이미지 로드
-            // Glide.with(itemView.context).load(friend.profileImageUrl).into(profileImageView)
+//            Glide.with(itemView.context).load(friend.profileImageUrl).into(profileImageView)
         }
     }
 

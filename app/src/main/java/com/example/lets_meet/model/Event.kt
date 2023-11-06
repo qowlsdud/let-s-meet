@@ -5,5 +5,5 @@ data class Event(
     var date: String,
     var starttime: String,
     var endtime: String,
-    var description: String
+    var public: Boolean
 )
