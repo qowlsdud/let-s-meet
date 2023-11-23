@@ -1,7 +1,5 @@
 package com.example.lets_meet.model
 
-
-
 data class ChatRoom(
     val roomId: String = "",
     val roomname: String = "",

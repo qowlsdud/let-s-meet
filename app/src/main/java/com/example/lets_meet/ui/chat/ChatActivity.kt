@@ -7,6 +7,7 @@ import com.example.lets_meet.databinding.ActivityChatBinding
 import com.example.lets_meet.model.Friend
 import com.example.lets_meet.model.Message
 import com.example.lets_meet.ui.base.BaseActivity
+import com.example.lets_meet.ui.caleander.CaleanderDialogFragment.Companion.TAG
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DataSnapshot
@@ -88,13 +89,27 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
     }
 
     private fun sendMessage(chatRoomId: String, message: Message) {
-        val databaseReference = FirebaseDatabase.getInstance().getReference("chatrooms/$chatRoomId/messages")
-        databaseReference.push().setValue(message)
-            .addOnSuccessListener {
-                // Message sent successfully
+        val database = FirebaseDatabase.getInstance()
+        val messagesRef = database.getReference("chatrooms/$chatRoomId/messages")
+
+        // 새 메시지를 messages 하위에 추가합니다.
+        messagesRef.push().setValue(message).addOnCompleteListener { messageTask ->
+            if (messageTask.isSuccessful) {
+                // 메시지가 성공적으로 추가되면 lastMessage만을 업데이트합니다.
+                val lastMessageRef = database.getReference("chatrooms/$chatRoomId/lastMessage")
+                lastMessageRef.setValue(message.content).addOnCompleteListener { lastMessageTask ->
+                    if (lastMessageTask.isSuccessful) {
+                        Log.d(TAG, "Last message updated successfully")
+                    } else {
+                        // lastMessage 업데이트 실패 시 처리
+                        Log.e(TAG, "Failed to update last message", lastMessageTask.exception)
+                    }
+                }
+            } else {
+                // 메시지 추가 실패 시 처리
+                Log.e(TAG, "Failed to send message", messageTask.exception)
             }
-            .addOnFailureListener {
-                // Handle failed to send message
-            }
+        }
     }
+
 }
