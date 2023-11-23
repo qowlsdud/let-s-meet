@@ -13,7 +13,6 @@ import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
 class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
     private lateinit var messageAdapter: MessageAdapter
     private lateinit var firebaseAuth: FirebaseAuth
@@ -23,7 +22,6 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         return dateFormat.format(Date())
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +49,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
                     sended_date = getCurrentDateTime()
                 )
                 sendMessage(chatRoomId, message)
-                // Clear the input field after sending a message
                 binding.edittextChatMessage.text.clear()
-                // Add the message to the local list and refresh the adapter
-                messagesList.add(message)
-                messageAdapter.setMessages(messagesList)
-                binding.recyclerViewChat.scrollToPosition(messagesList.size - 1)
             }
         }
     }
@@ -84,7 +77,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
         val databaseReference = FirebaseDatabase.getInstance().getReference("chatrooms/$chatRoomId/messages")
         databaseReference.push().setValue(message)
             .addOnSuccessListener {
-                // No need to handle success here since we're already updating the local list
+                // Message sent successfully
             }
             .addOnFailureListener {
                 // Handle failed to send message
