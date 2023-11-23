@@ -8,9 +8,7 @@
         <variable
 
             name="vm"
-
             type="com.example.lets_meet.ui.signup.SignUpViewModel" />
-
 
     </data>
     <ScrollView

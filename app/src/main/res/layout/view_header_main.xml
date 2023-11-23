@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
 
 
-        android:paddingHorizontal="14dp"
-        android:paddingVertical="10dp"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="20dp"
 
         android:layout_weight="1"
         >
@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+
         <ImageView
             android:id="@+id/img_splash_menu1"
             android:layout_width="wrap_content"
