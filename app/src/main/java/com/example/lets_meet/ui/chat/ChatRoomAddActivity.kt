@@ -42,13 +42,6 @@ class ChatRoomAddActivity  : BaseActivity<ActivityChatRoomAddBinding>(R.layout.a
 
     // RecyclerView 설정하는 메서드
     private fun setupRecyclerView(friendsList: List<Friend>) {
-        val friendsAdapter = FriendsAdapter(friendsList) { friend, isSelected ->
-            // 친구 선택 로직 처리
-        }
-        binding.recyclerViewFriends.apply {
-            layoutManager = LinearLayoutManager(this@ChatRoomAddActivity)
-            adapter = friendsAdapter
-        }
     }
     private fun setupCreateButton() {
         binding.createButton.setOnClickListener {
@@ -64,7 +57,7 @@ class ChatRoomAddActivity  : BaseActivity<ActivityChatRoomAddBinding>(R.layout.a
     private fun createChatRoom(name: String) {
         val newRoomId = database.child("chatrooms").push().key
         newRoomId?.let {
-            val users = mapOf("user1" to true, "user2" to true) // 샘플 사용자 목록, 실제 구현에서는 현재 사용자 정보를 사용해야 함
+            val users = mapOf("test1234" to true, "test1010" to true) // 샘플 사용자 목록, 실제 구현에서는 현재 사용자 정보를 사용해야 함
             val chatRoom = ChatRoom(
                 roomId = it,
                 roomname = name,

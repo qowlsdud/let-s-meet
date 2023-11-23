@@ -2,6 +2,7 @@ package com.example.lets_meet.ui.chat
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lets_meet.databinding.FragmentChatBinding
 import com.example.lets_meet.model.ChatRoom
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,6 +20,8 @@ class ChatFragment : Fragment() {
 
     private lateinit var binding: FragmentChatBinding
     private lateinit var chatRoomAdapter: ChatRoomAdapter
+    private lateinit var auth: FirebaseAuth
+
     private val database = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -33,7 +37,11 @@ class ChatFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        chatRoomAdapter = ChatRoomAdapter()
+        chatRoomAdapter = ChatRoomAdapter { chatRoom ->
+            val intent = Intent(context, ChatActivity::class.java)
+            intent.putExtra("chatRoomId", chatRoom.roomId)
+            startActivity(intent)
+        }
         binding.recyclerChatrooms.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = chatRoomAdapter
@@ -46,8 +54,12 @@ class ChatFragment : Fragment() {
                 val chatRooms = mutableListOf<ChatRoom>()
                 for (snapshot in dataSnapshot.children) {
                     val chatRoom = snapshot.getValue(ChatRoom::class.java)
-                    chatRoom?.let {
-                        chatRooms.add(it)
+                    auth = FirebaseAuth.getInstance()
+                    val user = FirebaseAuth.getInstance().currentUser
+                    if(chatRoom?.users?.containsKey(user?.email?.dropLast(10).toString()) == true) {
+                        chatRoom?.let {
+                            chatRooms.add(it)
+                        }
                     }
                 }
                 chatRoomAdapter.setChatRooms(chatRooms)

@@ -1,5 +1,6 @@
 package com.example.lets_meet.ui.more
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import com.example.lets_meet.R
 import com.example.lets_meet.databinding.FragmentMoreBinding
 import com.example.lets_meet.model.Friend
 import com.example.lets_meet.ui.base.BaseFragment
+import com.example.lets_meet.ui.chat.ChatRoomAddActivity
+import com.example.lets_meet.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -33,6 +36,10 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>(R.layout.fragment_more) {
                 binding.nickname = friend[0].name
                 binding.state = friend[0].state
             }
+        binding.myTxtLogout.setOnClickListener {
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
