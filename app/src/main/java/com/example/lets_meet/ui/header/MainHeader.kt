@@ -2,6 +2,7 @@ package com.example.lets_meet.ui.header
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -43,12 +44,13 @@ class MainHeader : LinearLayout {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.HeaderMain, defStyle, 0)
         setTypeArray(typedArray)
     }
-
     private fun setTypeArray(typedArray: TypedArray) {
         val menuIcon1 = typedArray.getResourceId(R.styleable.HeaderMain_mainMenu1Icon, R.drawable.header_setting_black)
         val menuIcon2 = typedArray.getResourceId(R.styleable.HeaderMain_mainMenu2Icon, R.drawable.notice_black)
         val menuIcon3 = typedArray.getResourceId(R.styleable.HeaderMain_mainMenu3Icon, R.drawable.search_main)
         val menutext = typedArray.getString(R.styleable.HeaderMain_mainMenuText)
+        val menutextColor = typedArray.getColor(R.styleable.HeaderMain_mainMenuTextColor, Color.BLACK)
+
 
         binding.imgSplashMenu1.apply {
                 menuIcon1 != R.drawable.header_setting_black
@@ -74,6 +76,7 @@ class MainHeader : LinearLayout {
         }
         binding.headerMainText.apply{
             text = menutext.toString()
+            setTextColor(menutextColor)
         }
 
         typedArray.recycle()

@@ -1,5 +1,6 @@
 package com.example.lets_meet.ui.friend
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class FriendAdapter(private var friends: List<Friend>, private val onClick: (Fri
 
     fun updateFriends(newFriends: List<Friend>) {
         friends = newFriends
+        Log.d("Ddd","ddd")
         notifyDataSetChanged()
     }
 }

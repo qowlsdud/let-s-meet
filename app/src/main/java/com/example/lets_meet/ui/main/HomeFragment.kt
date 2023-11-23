@@ -16,6 +16,7 @@ import com.example.lets_meet.model.Event
 import com.example.lets_meet.model.Friend
 import com.example.lets_meet.ui.state.StateChangeActivity
 import com.example.lets_meet.ui.base.BaseFragment
+import com.example.lets_meet.ui.caleander.CaleanderDialogFragment.Companion.TAG
 import com.example.lets_meet.ui.friend.FriendAdapter
 import com.example.lets_meet.ui.friend.ProfileActivity
 import com.example.lets_meet.ui.notice.NoticeActivity
@@ -156,26 +157,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     }
     private fun fetchFriends() {
         val user = FirebaseAuth.getInstance().currentUser
-        val email = user?.email // 현재 로그인한 사용자의 이메일
-        firestore.collection(email.toString())
+        val userEmail = user?.email.toString()
+        firestore.collection(userEmail)
             .document("userinfo")
-            .collection("friends").get()
+            .collection("friends")
+            .get()
             .addOnSuccessListener { documents ->
-                val friendsEmailList = documents.toObjects(Email::class.java)
 
-                var friendsList = mutableListOf<Friend>()
-                for (i in friendsEmailList) {
-                    firestore.collection(i.email.toString()).get()
-                        .addOnSuccessListener { documents ->
-
-                            val friend = documents.toObjects(Friend::class.java)
-                            adapter.updateFriends(friend)
-                        }
-                }
-
+                val friends = documents.toObjects(Friend::class.java)
+                Log.d("dddd", friends.toString())
+                adapter.updateFriends(friends)
             }
             .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                Log.w(TAG, "Error getting friends: ", exception)
             }
     }
+
+
 }
