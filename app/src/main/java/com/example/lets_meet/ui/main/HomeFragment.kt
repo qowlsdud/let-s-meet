@@ -117,7 +117,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-      }
+    }
+    private fun fetchFriends() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val email = user?.email // 현재 로그인한 사용자의 이메일
+        firestore.collection(email.toString())
+            .document("userinfo")
+            .collection("friends").get()
+            .addOnSuccessListener { documents ->
+                val friendsEmailList = documents.toObjects(Email::class.java)
+
+                var friendsList = mutableListOf<Friend>()
+                for (i in friendsEmailList) {
+                    firestore.collection(i.email.toString()).get()
+                        .addOnSuccessListener { documents ->
+
+                            val friend = documents.toObjects(Friend::class.java)
+                            adapter.updateFriends(friend)
+                        }
+                }
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }
+    }
     private fun setupEventRecyclerView() {
 
         eventAdapter = EventAdapter(emptyList(), weekAdapter.selectedDate.toString())
@@ -155,23 +179,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
                 Log.w(ContentValues.TAG, "Error getting events: ", exception)
             }
     }
-    private fun fetchFriends() {
-        val user = FirebaseAuth.getInstance().currentUser
-        val userEmail = user?.email.toString()
-        firestore.collection(userEmail)
-            .document("userinfo")
-            .collection("friends")
-            .get()
-            .addOnSuccessListener { documents ->
 
-                val friends = documents.toObjects(Friend::class.java)
-                Log.d("dddd", friends.toString())
-                adapter.updateFriends(friends)
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting friends: ", exception)
-            }
-    }
 
 
 }
