@@ -42,6 +42,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(R.layout.activity_chat) {
         binding.buttonSendMessage.setOnClickListener {
             val messageText = binding.edittextChatMessage.text.toString().trim()
             if (messageText.isNotEmpty()) {
+
                 val message = Message(
                     senderUid = currentUserId,
                     content = messageText,
