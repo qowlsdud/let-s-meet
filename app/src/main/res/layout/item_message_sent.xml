@@ -12,6 +12,11 @@
         android:gravity="end"
         android:padding="8dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_message_sent"/>
+
         <TextView
             android:id="@+id/textViewSentMessage"
             android:layout_width="wrap_content"
