@@ -46,16 +46,27 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                             finish()
                         } else {
                             // 로그인 실패 시, 에러 메시지를 표시합니다.
-                            Toast.makeText(this, "로그인 실패: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            binding.txtSign1Eror.visibility = android.view.View.VISIBLE
+                            binding.txtSign1Eror.text = "아이디 또는 비밀번호가 틀렸습니다."
+                            binding.loginEdtEmail.setBackgroundResource(R.drawable.edt_error)
+                            binding.loginEdtPassword.setBackgroundResource(R.drawable.edt_error)
                         }
                     }
             } else {
                 // 이메일 또는 비밀번호 입력란이 비어 있으면 경고 메시지를 띄웁니다.
-                Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                binding.txtSign1Eror.text = "이메일과 비밀번호를 입력해주세요."
+                binding.txtSign1Eror.visibility = android.view.View.VISIBLE
+                binding.loginEdtEmail.setBackgroundResource(R.drawable.edt_error)
+                binding.loginEdtPassword.setBackgroundResource(R.drawable.edt_error)
             }
         }
 
-        // 기타 로그인 화면에 관련된 로직이나 기능 구현...
-        // 예: 비밀번호 표시 토글, 비밀번호 재설정, 회원가입 화면으로의 이동 등
+        binding.loginBtnBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
