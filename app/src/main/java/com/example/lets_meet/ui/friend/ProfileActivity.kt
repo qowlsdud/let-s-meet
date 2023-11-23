@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.lets_meet.R
 import com.example.lets_meet.databinding.ActivityMainBinding
 import com.example.lets_meet.databinding.ActivityProfileBinding
+import com.example.lets_meet.model.Email
 import com.example.lets_meet.model.Friend
 import com.example.lets_meet.ui.base.BaseActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_profile) {
     private lateinit var firestore: FirebaseFirestore
-    private var friendId: String? = null
+    private var friendemail: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,28 +26,23 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
         firestore = FirebaseFirestore.getInstance()
 
         // 인텐트에서 "FRIEND_ID"를 가져옵니다.
-        friendId = intent.getStringExtra("FRIEND_ID")
+        friendemail = intent.getStringExtra("FRIEND_email")
 
         // 프로필을 로드합니다.
-        loadFriendProfile(friendId)
+        loadFriendProfile()
     }
 
-    private fun loadFriendProfile(friendId: String?) {
-        friendId?.let { id ->
-            firestore.collection("friends").document(id).get()
-                .addOnSuccessListener { documentSnapshot ->
-                    val friend = documentSnapshot.toObject(Friend::class.java)
-                    // 데이터를 뷰에 바인딩합니다.
-                    friend?.let { f ->
-                        binding.profileName.text = f.name
-                        binding.profileEmail.text = f.email
-                        // 기타 프로필 정보를 바인딩...
-                    }
-                }
-                .addOnFailureListener { e ->
-                    // 에러 처리
-                }
-        }
+    private fun loadFriendProfile() {
+        val email = friendemail// 현재 로그인한 사용자의 이메일
+        firestore.collection(email.toString()).get()
+            .addOnSuccessListener { documents ->
+
+                val friend = documents.toObjects(Friend::class.java)
+                binding.profileName.text = friend[0].name
+                binding.profileEmail.text = friend[0].email
+
+
+            }
     }
 }
 
