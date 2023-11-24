@@ -3,14 +3,20 @@ package com.example.lets_meet.ui.chat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.lets_meet.R
 import com.example.lets_meet.databinding.ItemMessageReceivedBinding
 import com.example.lets_meet.databinding.ItemMessageSentBinding
+import com.example.lets_meet.model.Friend
 import com.example.lets_meet.model.Message
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MessageAdapter(private val currentUserId: String = FirebaseAuth.getInstance().currentUser?.uid.orEmpty()) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var messages: MutableList<Message> = mutableListOf()
+    private lateinit var firestore: FirebaseFirestore
 
     companion object {
         const val VIEW_TYPE_SENT = 0
@@ -63,9 +69,19 @@ class MessageAdapter(private val currentUserId: String = FirebaseAuth.getInstanc
 
     inner class ReceivedMessageViewHolder(private val binding: ItemMessageReceivedBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
-            Log.d("MessageAdapter", "Binding received message: ${message.content}")
-            binding.textViewReceivedMessage.text = message.content
-            binding.textViewSenderName.text = message.senderName
+            val user = FirebaseAuth.getInstance().currentUser
+            firestore = FirebaseFirestore.getInstance()
+            val email = user?.email // 현재 로그인한 사용자의 이메일
+            firestore.collection(email.toString()).get()
+                .addOnSuccessListener { documents ->
+
+                    val friend = documents.toObjects(Friend::class.java)
+                    val url = friend[0].profileImageUrl
+                    binding.textViewReceivedMessage.text = message.content
+                    binding.textViewSenderName.text = message.senderName
+                    Glide.with(itemView.context).load(url).into(itemView.findViewById(R.id.imageViewProfile))
+                }
+
         }
     }
 }
