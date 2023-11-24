@@ -8,8 +8,7 @@
     <ImageView
         android:id="@+id/imageView_friend_profile"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher_round" />
+        android:layout_height="50dp" />
 
     <TextView
         android:id="@+id/textView_friend_name"
