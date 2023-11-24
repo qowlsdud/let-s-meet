@@ -1,15 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.state.StateChangeActivity">
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.state.StateChangeActivity"
+    android:padding="22dp">
+
+    <ImageView
+        android:id="@+id/state_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상태 변경"
+        android:fontFamily="@font/suit_bold"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/state_btn_back"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/state_true"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:src="@drawable/background_state_true"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 상태"
+            android:textColor="@color/white"
+
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toTopOf="@id/state_true"
+            app:layout_constraintStart_toStartOf="@id/state_true"
+            app:layout_constraintBottom_toBottomOf="@id/state_true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pencil_white"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="@id/state_true"
+            app:layout_constraintEnd_toEndOf="@id/state_true"
+            app:layout_constraintBottom_toBottomOf="@id/state_true"/>
 
     <ListView
         android:id="@+id/lvStates"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/state_true"/>
+
+    <ImageView
+        android:id="@+id/state_background_add"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:src="@drawable/background_state_false"
+        app:layout_constraintTop_toBottomOf="@id/lvStates"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        app:layout_constraintTop_toTopOf="@id/state_background_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/state_background_add"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
