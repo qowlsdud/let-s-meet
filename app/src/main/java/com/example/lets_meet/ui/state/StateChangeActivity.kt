@@ -28,7 +28,7 @@ class StateChangeActivity : AppCompatActivity() {
     }
     private fun getInitialStates(): List<State> {
         // 데이터 소스에서 상태 목록을 가져오거나 초기 데이터를 생성합니다.
-        return listOf(State("상태 메시지 1"), State("상태 메시지 2", isEdited = true))
+        return listOf(State("없음"))
     }
 
     // ...
